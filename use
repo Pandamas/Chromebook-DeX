@@ -1,0 +1,30 @@
+
+
+Prüfung auf Abhängigkeiten
+Gleich zu Beginn wird überprüft, ob adb und scrcpy im PATH liegen (shutil.which). Falls nicht, wird eine Fehlermeldung ausgegeben und das Programm beendet.
+
+Geräteverwaltung
+
+Alle 5 Sekunden werden die angeschlossenen Android-Geräte über adb devices -l abgefragt.
+
+Die Ergebnisse werden in einer QComboBox angezeigt.
+
+Es gibt Buttons zum Aktualisieren und zur Verbindungskontrolle (adb get-state).
+
+
+scrcpy-Integration
+
+Mit einem Button startest du scrcpy für das ausgewählte Gerät (mit --stay-awake und --max-size 1280).
+
+Ein separater Thread liest den stderr-Output von scrcpy, um ihn ins Logfenster zu schreiben.
+
+Ein anderer Button stoppt den laufenden scrcpy-Prozess.
+
+
+UI-Layout
+
+Oben: Geräteauswahl + Buttons.
+
+Mitte: Buttons zum Starten/Stoppen von scrcpy.
+
+Unten: ein Log-Fenster, das alles mitschreibt.
